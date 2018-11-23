@@ -1,5 +1,7 @@
 ﻿@model ProyectoA.Models.USUARIOS
-
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -18,10 +20,10 @@
                 @using (Html.BeginForm())
                 {
                     @Html.ValidationSummary()
-                <div class="form-group">
-                    Nombre*:
-                    <input type="text" required class="inputs" id="NOMBRE" name="NOMBRE" />
-                </div>
+                    <div class="form-group">
+                        Nombre*:
+                        <input type="text" required class="inputs" id="NOMBRE" name="NOMBRE" />
+                    </div>
 
                     <div class="form-group">
                         Apellido*:
@@ -52,7 +54,7 @@
 
                     </div>
                     <div class="text-center">
-                        @Html.ActionLink("Si ya tienes una cuenta, haz click aqui para acceder.", "Login", "Home") 
+                        @Html.ActionLink("Si ya tienes una cuenta, haz click aqui para acceder.", "Login", "Home")
                         <input class="boton btn-info" type="submit" value="Registrar" />
                     </div>
                 }

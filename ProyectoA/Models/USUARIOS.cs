@@ -5,6 +5,7 @@ namespace ProyectoA.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     public partial class USUARIOS
     {
@@ -33,5 +34,7 @@ namespace ProyectoA.Models
 
         [StringLength(50)]
         public string CIUDAD { get; set; }
+
+        
     }
 }

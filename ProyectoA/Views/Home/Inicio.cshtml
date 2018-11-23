@@ -1,5 +1,8 @@
 ﻿@model  List<ProyectoA.Models.ARTICULO>
 
+@{ 
+    Layout = "../Shared/_Layout.cshtml";
+}
 <!DOCTYPE html>
 
 <html>
@@ -87,16 +90,15 @@
         brew
     </div>-->
         <div class="publicaciones">
-           
+            @foreach (var item in Model)
+            {
                 <div class="articulo">
                     <img class="imgarticulo" src="~/Imagenes/calalogon.png" />
-                    <h3><a>Casa enorme con patio entorme!</a></h3>
-                    <p>lorem ipsum bla bla bla sadadasdiohawooooooooooo</p>
+                    <h3><a>@item.TITULO</a></h3>
+                    <p>@item.DESCRIPCION</p>
                 </div>
-            
 
-
-
+            }
 
         </div>
     </div>

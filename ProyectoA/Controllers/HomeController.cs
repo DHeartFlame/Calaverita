@@ -11,15 +11,15 @@ namespace ProyectoA.Controllers
     {
         public ActionResult Index()
         {
-            //ARTICULO a = new ARTICULO();
+            
 
             return View();
         }
 
         public ActionResult Inicio()
         {
-
-            return View();
+            ARTICULO a = new ARTICULO();
+            return View(a.Listar());
         }
 
         [HttpGet]

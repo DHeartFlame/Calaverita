@@ -5,6 +5,7 @@ namespace ProyectoA.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     [Table("ARTICULO")]
     public partial class ARTICULO
@@ -33,5 +34,15 @@ namespace ProyectoA.Models
 
         [Column(TypeName = "date")]
         public DateTime? FECHA_PUBLICACION { get; set; }
+
+        public List<ARTICULO> Listar()
+        {
+            List<ARTICULO> lista = new List<ARTICULO>();
+            using (var context = new ProyectoaDbContext())
+            {
+                lista = context.ARTICULO.ToList();
+            }
+            return lista;
+        }
     }
 }
