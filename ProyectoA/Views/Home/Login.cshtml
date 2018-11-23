@@ -1,0 +1,20 @@
+﻿@model ProyectoA.Models.USUARIOS
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <input type="text" placeholder="Usuario" required name="ID_USUARIO" id="ID_USUARIO" />
+        <input type="password" placeholder="Contraseña" required name="PASS" id="PASS" />
+        <input type="submit" name="Entrar" value="Entrar" />
+    }
+
+
+</body>
+</html>

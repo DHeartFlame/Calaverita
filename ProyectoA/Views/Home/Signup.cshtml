@@ -1,0 +1,65 @@
+﻿@model ProyectoA.Models.USUARIOS
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Base.css" />
+    <link rel="stylesheet" href="~/Content/Registro.css" />
+
+</head>
+<body>
+    <div class="contenedor">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center"><h4>Signup</h4></div>
+            <div class="panel-body">
+                Los campos con * son obligatorios
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary()
+                <div class="form-group">
+                    Nombre*:
+                    <input type="text" required class="inputs" id="NOMBRE" name="NOMBRE" />
+                </div>
+
+                    <div class="form-group">
+                        Apellido*:
+                        <input type="text" required class="inputs" id="APELLIDO" name="APELLIDO" />
+                    </div>
+
+                    <div class="form-group">
+                        Usuario*:
+                        <input type="text" required class="inputs" id="ID_USUARIO" name="ID_USUARIO" />
+                    </div>
+                    <div class="form-group">
+                        Contraseña:
+                        <input type="password" required class="inputs" id="PASS" name="PASS" />
+                    </div>
+                    <div class="form-group">
+                        Correo*:
+                        @Html.TextBoxFor(x => x.CORREO, new { @class = "inputs" })
+                    </div>
+
+                    <div class="form-group">
+                        Ciudad:
+                        @Html.TextBoxFor(x => x.CIUDAD, new { @class = "inputs" })
+                    </div>
+
+                    <div class="form-group">
+                        Fecha de Nacimiento:
+                        <input type="date" name="FECHA_NAC" id="FECHA_NAC" class="inputs" />
+
+                    </div>
+                    <div class="text-center">
+                        @Html.ActionLink("Si ya tienes una cuenta, haz click aqui para acceder.", "Login", "Home") 
+                        <input class="boton btn-info" type="submit" value="Registrar" />
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

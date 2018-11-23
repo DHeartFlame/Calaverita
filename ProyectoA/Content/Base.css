@@ -1,0 +1,11 @@
+﻿body {
+}
+img {
+    width: 100px;
+    height: 50px;
+    float: left;
+}
+.contenedor {
+    width: 100%;
+    height: 700px;
+}
