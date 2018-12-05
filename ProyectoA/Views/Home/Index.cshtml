@@ -10,11 +10,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <meta http-equiv="refresh" content="2;url=http://localhost:3939/Home/Inicio" />
     <title>Index</title>
     <style type="text/css">
         body {
             background-color: beige;
         }
+
         #circ {
             width: 10px;
             height: 10px;
@@ -22,8 +24,9 @@
             left: 40%;
             top: 50px;
         }
-        .div{
-            text-align:center;
+
+        .div {
+            text-align: center;
         }
 
         #contenedorLogo {
@@ -45,7 +48,6 @@
 <body>
     <div>
         <div class="div"><img id="circ" src="~/Imagenes/calalogon.png" /><br /><b id="Logo">Calaverita</b> </div>
-        <div class="go btn btn-default" onclick="">@Html.ActionLink("Inicio", "Inicio", "Home")</div>
     </div>
     <script>
 
