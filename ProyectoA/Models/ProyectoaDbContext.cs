@@ -14,6 +14,7 @@ namespace ProyectoA.Models
 
         public virtual DbSet<ARTICULO> ARTICULO { get; set; }
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual DbSet<DELETED_US> DELETED_Us { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,18 +24,6 @@ namespace ProyectoA.Models
 
             modelBuilder.Entity<ARTICULO>()
                 .Property(e => e.ID_USUARIO)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ARTICULO>()
-                .Property(e => e.IMAGEN1)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ARTICULO>()
-                .Property(e => e.IMAGEN2)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ARTICULO>()
-                .Property(e => e.IMAGEN3)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ARTICULO>()

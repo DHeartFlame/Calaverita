@@ -5,11 +5,16 @@ namespace ProyectoA.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Linq;
 
-    public partial class USUARIOS
+    public partial class DELETED_US
     {
+        [Column(TypeName = "date")]
+        public DateTime? FECHA_DEL { get; set; }
+
         [Key]
+        public int ID_DEL_US { get; set; }
+
+        [Required]
         [StringLength(20)]
         public string ID_USUARIO { get; set; }
 
@@ -37,15 +42,5 @@ namespace ProyectoA.Models
 
         [Column(TypeName = "image")]
         public byte[] FOTO { get; set; }
-
-        public List<USUARIOS> Listar()
-        {
-            List<USUARIOS> lista = new List<USUARIOS>();
-            using (var context = new ProyectoaDbContext())
-            {
-                lista = context.USUARIOS.ToList();
-            }
-            return lista;
-        }
     }
 }

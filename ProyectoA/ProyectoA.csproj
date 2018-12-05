@@ -155,12 +155,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ARTICULO.cs" />
+    <Compile Include="Models\DELETED_US.cs" />
     <Compile Include="Models\ProyectoaDbContext.cs" />
     <Compile Include="Models\USUARIOS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +173,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Inicio.css" />
     <Content Include="Content\Registro.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -205,13 +208,21 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Inicio.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\nuevoArticulo.cshtml" />
+    <Content Include="Views\User\Perfil.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\adminUsuarios.cshtml" />
+    <Content Include="Views\Admin\Editar.cshtml" />
+    <Content Include="Views\User\Detalles.cshtml" />
+    <Content Include="Views\User\Articulos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

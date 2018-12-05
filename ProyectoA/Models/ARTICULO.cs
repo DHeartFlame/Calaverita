@@ -11,7 +11,6 @@ namespace ProyectoA.Models
     public partial class ARTICULO
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_ARTICULO { get; set; }
 
         [StringLength(50)]
@@ -20,20 +19,22 @@ namespace ProyectoA.Models
         [StringLength(50)]
         public string ID_USUARIO { get; set; }
 
-        [StringLength(200)]
-        public string IMAGEN1 { get; set; }
+        [Column(TypeName = "image")]
+        public byte[] IMAGEN1 { get; set; }
 
-        [StringLength(200)]
-        public string IMAGEN2 { get; set; }
+        [Column(TypeName = "image")]
+        public byte[] IMAGEN2 { get; set; }
 
-        [StringLength(200)]
-        public string IMAGEN3 { get; set; }
+        [Column(TypeName = "image")]
+        public byte[] IMAGEN3 { get; set; }
 
         [StringLength(500)]
         public string DESCRIPCION { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? FECHA_PUBLICACION { get; set; }
+
+        public int? PRECIO { get; set; }
 
         public List<ARTICULO> Listar()
         {
