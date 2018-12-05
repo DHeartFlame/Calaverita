@@ -1,0 +1,93 @@
+Comment Box Code C#
+
+Create Comment Page : HTML Markup
+
+This below html code is used to create Comment section TextBox and Comment Button as i shown in below image
+
+<div style="padding:15px 20px; width:560px;">
+<asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine" 
+Width="560px" Height="60px"></asp:TextBox>
+<asp:Image ID="Image1" runat="server" 
+ImageUrl="https://myspace.com/common/images/user.png" 
+style="width:30px; height:30px; border-radius:50%;" />
+<asp:Button ID="btnComment" Text="Comment" runat="server" 
+style="background-color:#4800ff; border:1px solid #4800ff; padding:7px 25px; border-radius:5px; 
+color:#fff; float:right;" OnClick="btnComment_Click" />
+</div>
+
+C# Coding : Comment Button Click Event
+
+this code is used to stored comment in database, and this code is working fine when i tested.
+
+protected void btnCommentPublish_Click(object sender, EventArgs e)
+ {
+  SqlCommand cmd = new SqlCommand("spCommentInsert", con);
+  cmd.CommandType = CommandType.StoredProcedure;
+  cmd.Parameters.AddWithValue("@Username", Request.QueryString["Username"].ToString());
+  cmd.Parameters.AddWithValue("@CommentMessage", txtComment.Text);
+  con.Open();
+  cmd.ExecuteNonQuery();
+  con.Close();
+  //call CommentsBind Method
+  CommentsBind();
+ }
+
+Design to Show Comment Section like Facebook : HTML Markup
+
+i don't have any image column in UserTable, so in comment section i'll display user profile picture is default image for all.
+
+<asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="false" BorderWidth="0" Width="50%">
+<Columns>
+ <asp:TemplateField>
+  <ItemTemplate>
+   <div style="width:100%;">
+    <table style="margin:3px 5px; width:100%;">
+     <tr>
+      <td style="width:55px; vertical-align:text-top;">                                                                                                               
+      <asp:Image ID="ImageParent" runat="server" style="width:50px; height:50px;" ImageUrl="https://storage.designcrowd.com/common/images/v3/no-profile-pic-tiny.png" />
+      </td>
+      <td style="padding:0px 5px; text-align:left; vertical-align:top;">
+       <asp:Label ID="lblCommentID" runat="server" Visible="false" Text='<% #Evalundefined"CommentID") %>'></asp:Label>
+       <asp:Label ID="lblCommentMessage" runat="server" Text='<% #Evalundefined"CommentMessage") %>'></asp:Label><br />
+       <a class="link" id='lnkReplyParent<%# Evalundefined"CommentID") %>' href="javascript:voidundefined0)" onclick="showReplyundefined<%# Evalundefined"CommentID") %>); return false;">Reply</a>&nbsp;
+       <a class="link" id="lnkCancel" href="javascript:voidundefined0)" onclick="closeReplyundefined<%# Evalundefined"CommentID") %>); return false;">Cancel</a>
+      <div id='divReply<%# Evalundefined"CommentID") %>' style="display:none; margin-top:5px;">
+        <asp:TextBox ID="txtCommentReplyParent" runat="server" TextMode="MultiLine" Width="560px" Height="60px"></asp:TextBox>
+        <asp:Button ID="btnReplyParent" runat="server" Text="Reply" style="float:right;margin:5px;" />
+      </div>  
+      </td>
+     </tr>
+    </table>
+   </div>
+   </ItemTemplate>
+  </asp:TemplateField>
+ </Columns>
+</asp:GridView>
+
+jQuery : Show Reply and Close Button
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script type="text/javascript">
+   function showReply(n) {
+            $("#divReply" + n).show();
+            return false;
+            return false;
+        }
+        function closeReply(n) {
+            $("#divReply" + n).hide();
+            return false;
+        }
+  </script>
+
+
+CSS : Reply and Close Button
+
+  <style type="text/css">
+   .link {
+            text-decoration:none;
+            color:#808080;
+        }
+            .link:hover {
+                color:#dddddd;
+            }
+  </script>
