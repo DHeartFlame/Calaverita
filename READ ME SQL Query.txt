@@ -1,0 +1,105 @@
+Link for Comment Box tutorial used:
+http://www.dotnetprogramer.in/2016/07/hierarchy-comments-section-database-in-aspnet.html
+
+SQL Query
+User Table
+create Table UserTable(
+  Username varchar(25),
+  Password varchar(25),
+  Primary Key(Username))
+ Go
+
+Table Info oof User Table
+ Insert into UserTable values('Paul','Paul1')
+ Insert into UserTable values('Robert','Rober1')
+ Insert into UserTable values('James','James1')
+ Insert into UserTable values('Mary','Mary1')
+ Insert into UserTable values('Albert','Albert1')
+
+ParentCommentTable
+create table ParentCommentTable(
+ CommentID int identity(1,1),
+ Username varchar(25),
+ CommentMessage varchar(300),
+ CommentDate date,
+ Primary Key(CommentID),
+ Foreign Key(Username) References UserTable(Username))
+
+ChildCommentTable
+create table ChildCommentTable(
+ CommentID int identity(1,1),
+ Username varchar(25),
+ CommentMessage varchar(300),
+ CommentDate date,
+ ParentCommentID int,
+ Primary Key(CommentID),
+ Foreign Key(ParentCommentID) References ParentCommentTable(CommentID)
+
+StoredProcedure : spCheckUserCredentials
+
+This spCheckUserCredentials is used to check whether username and password already exist or not.
+
+create procedure spCheckUserCredentials(
+@Username varchar(25),
+@Password varchar(25))
+As
+ Begin
+  Select * from UserTable where Username=@Username and Password=@Password
+ End
+
+spCommentInsert
+create procedure spCommentInsert(
+@Username varchar(25),
+@CommentMessage varchar(300))
+As
+ Begin
+  Insert into ParentCommentTable(Username, CommentMessage, CommentDate)
+         values(@Username, @CommentMessage, GETDATE())
+ End
+
+spCommentUpdate
+create procedure spCommentUpdate(
+@CommentID int,
+@Username varchar(25),
+@CommentMessage varchar(300))
+As
+ Begin
+  Update ParentCommentTable set CommentMessage=@CommentMessage 
+                            where CommentID=@CommentID and Username=@Username
+ End
+
+spCommentReplyInsert
+create procedure spCommentReplyInsert(
+@Username varchar(25),
+@CommentMessage varchar(300),
+@ParentCommentID int)
+As
+ Begin
+  Insert into ChildCommentTable(Username, CommentMessage, CommentDate, ParentCommentID)
+         values(@Username,@CommentMessage, GETDATE(),@ParentCommentID)
+ End
+
+spGetParentComment
+create procedure spGetParentComment
+As
+ Begin
+  Select * from ParentCommentTable
+ End
+ Foreign Key(Username) References UserTable(Username)) 
+
+spGetParentCommentByUsername
+create procedure spGetParentCommentUsername(
+@Username varchar(25))
+As
+ Begin
+  Select * from ParentCommentTable where Username=@Username
+ End
+
+ spGetChildCommentByParentCommentID
+create procedure spGetParentCommentByParentCommentID(
+@ParentCommentID int)
+As
+ Begin
+  Select * from ChildCommentTable where ParentCommentID=@ParentCommentID
+ End
+
