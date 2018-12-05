@@ -1,0 +1,83 @@
+﻿@model  List<ProyectoA.Models.USUARIOS>
+
+@{
+    ViewBag.Title = ViewBag.loggedUser;
+    Layout = "../Shared/_LayoutUser.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inicio</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Base.css" />
+    <link rel="stylesheet" href="~/Content/Inicio.css" />
+</head>
+<body>
+    <style>
+        .foto {
+            text-align: center;
+        }
+
+        .fotoperfil {
+            width: 100%;
+            height: 250px;
+            transition: 0.9s;
+        }
+
+            .fotoperfil:hover {
+                opacity: 0.5;
+            }
+            .contenidos{
+                background-color:beige;
+                border-radius:10px;
+                box-shadow: 3px 3px 3px lightgray;
+            }
+    </style>
+    <div class="container">
+
+        @foreach (var user in Model)
+        {
+            if (user.ID_USUARIO == ViewBag.logged)
+            {
+
+        <div class="foto col-md-4">
+            @if (user.FOTO == null)
+            {
+            <img class="fotoperfil" src="~/Imagenes/calalogon.png" />
+            }
+            else
+            {
+                <img class="fotoperfil" src="@Url.Action("convertirImagenU", "User", new { codigo = user.ID_USUARIO })" />
+            }
+            <br />
+            <form action="/User/cambiarFoto" enctype="multipart/form-data" method="post">
+                <input required type="file" name="cambio" />
+                <input class="btn btn-info" type="submit" name="cambiar" value="Cambiar foto" />
+            </form>
+        </div>
+                <div class="col-md-8 contenidos">
+                    <b>
+                        <h3>  @user.NOMBRE @user.APELLIDO </h3> <br />
+                        <h4>
+                        Correo: @user.CORREO <br /> <br />
+                        Password: @user.PASS <br /> <br />
+                        Ciudad: @user.CIUDAD <br /> <br />
+                        Fecha de Nacimiento: @user.FECHA_NAC <br /> <br />
+                            @Html.ActionLink("Editar ", "Admin")
+                        </h4>
+                            </b>
+
+                </div>
+            }
+
+        }
+
+
+
+
+    </div>
+
+</body>
+</html>

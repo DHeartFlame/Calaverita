@@ -1,0 +1,25 @@
+﻿@model ProyectoA.Models.USUARIOS
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.Label("Usuario")
+            <input class="form-control" type="text" placeholder="Usuario" required name="ID_USUARIO" id="ID_USUARIO" />
+            @Html.Label("Contrasenia")
+            <input class="form-control" type="password" placeholder="Contraseña" required name="PASS" id="PASS" /> <br>   
+            <input class="btn btn-info" type="submit" name="Entrar" value="Entrar" />
+        }
+    </div>
+
+</body>
+</html>

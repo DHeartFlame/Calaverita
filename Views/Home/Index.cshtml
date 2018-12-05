@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <meta http-equiv="refresh" content="2;url=http://localhost:3939/Home/Inicio" />
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            background-color: beige;
+        }
+
+        #circ {
+            width: 10px;
+            height: 10px;
+            position: relative;
+            left: 40%;
+            top: 50px;
+        }
+
+        .div {
+            text-align: center;
+        }
+
+        #contenedorLogo {
+            position: absolute;
+            top: 200px;
+            text-align: center;
+            left: 40px;
+        }
+
+        .go {
+            margin: 0 38%;
+            width: 300px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+</head>
+<body>
+    <div>
+        <div class="div"><img id="circ" src="~/Imagenes/calalogon.png" /><br /><b id="Logo">Calaverita</b> </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            $("#circ").animate({left:"0%", height: "450px", width: "50%" }, 2000);
+            $("#Logo").animate({ fontSize: "6em" }, 2000);
+        });
+    </script>
+</body>
+</html>
